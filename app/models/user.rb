@@ -28,7 +28,8 @@ class User < Neography::Node
                                 "token"     => auth.credentials.token, 
                                 "secret"    => auth.credentials.secret})
 
-    $neo.add_to_index("users", "screen_name", auth.info.nickname, node)                            
+    $neo.add_to_index("users", "screen_name", auth.info.nickname, node)    
+    $neo.add_to_index("users", "name", auth.info.name, node)                                                    
     user = User.load(node)
     GetFollowers.perform_async(user.uid, "-1")
     user
