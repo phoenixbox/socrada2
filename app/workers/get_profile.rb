@@ -13,7 +13,7 @@ class GetProfile
         
     unless friend_node["data"]["screen_name"]
       begin
-        friend = user.client.user(friend_id)
+        friend = user.client.user(friend_id.to_i)
         $neo.set_node_properties(friend_node,
                            {"name"      => friend.name,
                             "screen_name"  => friend.screen_name,
