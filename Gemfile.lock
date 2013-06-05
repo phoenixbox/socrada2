@@ -130,6 +130,8 @@ GEM
       sinatra
       slim
       sprockets
+    sidekiq-unique-jobs (2.6.5)
+      sidekiq (~> 2.6)
     simple_oauth (0.2.0)
     sinatra (1.3.6)
       rack (~> 1.4)
@@ -178,6 +180,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sidekiq
   sidekiq-failures
+  sidekiq-unique-jobs
   sinatra
   slim (= 2.0.0)
   sqlite3

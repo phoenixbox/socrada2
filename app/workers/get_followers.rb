@@ -7,25 +7,20 @@ class GetFollowers
     commands = [] 
     friend_nodes =[]
     cursor ||= "-1"
-
+    slice_count = 0
+    
     # Get the twitter users that follow me
 
     while cursor != 0 do
       friends = user.client.follower_ids({:cursor => cursor})
       
       begin
-        friends.ids.each do |f|
-          friend = user.client.user(f)
-          commands << [:create_unique_node, "users", "uid", friend.id, 
-                       {"name"      => friend.name,
-                        "nickname"  => friend.screen_name,
-                        "location"  => friend.location,
-                        "image_url" => friend.profile_image_url,
-                        "uid"       => friend.id,
-                        "statuses_count"  => friend.statuses_count,
-                        "followers_count" => friend.followers_count,
-                        "friends_count"   => friend.friends_count
-                        }]
+        friends.ids.each_slice(100) do |slice|
+          slice.each do |f|
+            commands << [:create_unique_node, "users", "uid", "#{f}", {:uid => "#{f}"}]
+            GetProfile.perform_in( (1 + (slice_count * 15) ).minutes, uid, "#{f}")
+          end
+          slice_count += 1
         end
       
         batch_result = $neo.batch *commands
@@ -36,9 +31,7 @@ class GetFollowers
         cursor = friends.next_cursor
       rescue Twitter::Error::TooManyRequests => error
         GetFollowers.perform_in(16.minutes, uid, cursor)
-      end  
-        
-        
+      end          
     end
 
     
