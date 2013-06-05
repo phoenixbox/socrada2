@@ -15,8 +15,12 @@ gem 'twitter'
 
 # Jobs
 gem 'sidekiq'
-gem 'sinatra'
+gem 'sidekiq-failures'
+gem 'sinatra', require: false
 gem 'slim', '2.0.0'
+
+# Others
+gem 'foreman'
 
 # Gems used only for assets and not required
 # in production environments by default.
