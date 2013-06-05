@@ -22,7 +22,7 @@ gem 'slim', '2.0.0'
 
 # Others
 gem 'foreman'
-gem 'haml'
+#gem 'haml'
 
 # Twitter Bootstrap
 #gem "therubyracer"
