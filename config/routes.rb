@@ -9,6 +9,7 @@ Socrada2::Application.routes.draw do
   match 'auth/failure' => redirect('/')
   match 'auth/:provider/callback', to: 'sessions#create', as: 'signin'
   match 'signout', to: "sessions#destroy", as: "signout"
+  get 'search_screen_names' => 'search#screen_names'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

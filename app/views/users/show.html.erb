@@ -1,1 +1,9 @@
 Users#show
+
+<% content_for :sidepanel do %>
+	<%= form_tag("/search_screen_names", :method => "post") do %>
+	  <%= label_tag(:q, "Search for:") %>
+	  <%= text_field_tag(:q) %>
+	  <%= submit_tag("Search") %>
+	<% end %>
+<% end %>

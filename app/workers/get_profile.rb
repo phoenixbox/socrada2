@@ -24,7 +24,7 @@ class GetProfile
                             "followers_count" => friend.followers_count,
                             "friends_count"   => friend.friends_count
                             })        
-    
+        $neo.add_to_index("users", "screen_name", friend.screen_name, friend_node)                            
       rescue Twitter::Error::TooManyRequests => error
         GetFollowers.perform_in( rand(15..60).minutes, uid, friend_id)
       end  

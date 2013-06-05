@@ -23,11 +23,10 @@ gem 'slim', '2.0.0'
 
 # Others
 gem 'foreman'
-#gem 'haml'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Twitter Bootstrap
-#gem "therubyracer"
-#gem "less-rails" 
 gem "twitter-bootstrap-rails"
 
 
@@ -43,7 +42,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

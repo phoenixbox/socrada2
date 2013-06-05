@@ -18,7 +18,7 @@ class User < Neography::Node
     node = $neo.create_unique_node("users", "uid", auth.uid)
     $neo.set_node_properties(node, 
                               {"name"       => auth.info.name,
-                                "nickname"  => auth.info.nickname,
+                                "screen_name"  => auth.info.nickname,
                                 "location"  => auth.info.location,
                                 "image_url" => auth.info.image,
                                 "uid"       => auth.uid,
@@ -27,6 +27,8 @@ class User < Neography::Node
 #                                "friends_count"   => auth.info.friends_count,
                                 "token"     => auth.credentials.token, 
                                 "secret"    => auth.credentials.secret})
+
+    $neo.add_to_index("users", "screen_name", auth.info.nickname, node)                            
     user = User.load(node)
     GetFollowers.perform_async(user.uid, "-1")
     user
