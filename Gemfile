@@ -17,12 +17,13 @@ gem 'omniauth-twitter'
 # Jobs
 gem 'sidekiq'
 gem 'sidekiq-failures'
+gem 'sidekiq-unique-jobs'
 gem 'sinatra', require: false
 gem 'slim', '2.0.0'
 
 # Others
 gem 'foreman'
-gem 'haml'
+#gem 'haml'
 
 # Twitter Bootstrap
 #gem "therubyracer"

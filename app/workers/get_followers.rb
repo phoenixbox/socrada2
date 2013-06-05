@@ -2,42 +2,46 @@ class GetFollowers
   include Sidekiq::Worker
   sidekiq_options queue: "high"
   
-  def perform(uid)
+  def perform(uid, cursor = "-1")
     user = User.find_by_uid(uid)
     commands = [] 
-    cursor = "-1"
-
+    friend_nodes =[]
+    cursor ||= "-1"
+    slice_count = 0
+    
     # Get the twitter users that follow me
 
     while cursor != 0 do
       friends = user.client.follower_ids({:cursor => cursor})
-      cursor = friends.next_cursor
-
-      friends.ids.each do |f|
-        friend = user.client.user(f)
-        commands << [:create_unique_node, "users", "uid", friend.id, 
-                     {"name"      => friend.name,
-                      "nickname"  => friend.screen_name,
-                      "location"  => friend.location,
-                      "image_url" => friend.profile_image_url,
-                      "uid"       => friend.id,
-                      "statuses_count"  => friend.statuses_count,
-                      "followers_count" => friend.followers_count,
-                      "friends_count"   => friend.friends_count
-                      }]
-      end
+      
+      begin
+        friends.ids.each_slice(100) do |slice|
+          slice.each do |f|
+            commands << [:create_unique_node, "users", "uid", "#{f}", {:uid => "#{f}"}]
+            GetProfile.perform_in( (1 + (slice_count * 15) ).minutes, uid, "#{f}")
+          end
+          slice_count += 1
+        end
+      
+        batch_result = $neo.batch *commands
+        batch_result.each do |b|  
+          friend_nodes << {:uid => b["body"]["data"]["uid"], :node_id => b["body"]["self"].split("/").last}
+        end
+        
+        cursor = friends.next_cursor
+      rescue Twitter::Error::TooManyRequests => error
+        GetFollowers.perform_in(16.minutes, uid, cursor)
+      end          
     end
-
-    batch_result = $neo.batch *commands
 
     
     # Add the twitter users I follow as my followers
     commands = [] 
      
-    batch_result.each do |b|  
-      commands << [:create_unique_relationship, "follows", "nodes",  "#{b["body"]["data"]["uid"]}-#{uid}", "follows", b["body"]["self"].split("/").last, user]
+    friend_nodes.each do |b|  
+      commands << [:create_unique_relationship, "follows", "nodes",  "#{b[:uid]}-#{uid}", "follows", b[:node_id], user]
     end
 
     $neo.batch *commands
-
+  end
 end

@@ -22,13 +22,13 @@ class User < Neography::Node
                                 "location"  => auth.info.location,
                                 "image_url" => auth.info.image,
                                 "uid"       => auth.uid,
-                                "statuses_count"  => auth.info.statuses_count,
-                                "followers_count" => auth.info.followers_count,
-                                "friends_count"   => auth.info.friends_count,
+#                                "statuses_count"  => auth.info.statuses_count,
+#                                "followers_count" => auth.info.followers_count,
+#                                "friends_count"   => auth.info.friends_count,
                                 "token"     => auth.credentials.token, 
                                 "secret"    => auth.credentials.secret})
     user = User.load(node)
-    GetFollowers.perform_async(user.uid)
+    GetFollowers.perform_async(user.uid, "-1")
     user
   end
   
