@@ -7,6 +7,9 @@
 # Ignore bundler config
 /.bundle
 
+# Ignore Neo4j
+neo4j
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 

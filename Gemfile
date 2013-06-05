@@ -5,8 +5,18 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 
+# Databases
+gem 'sqlite3'
+gem 'neography'
+
+# External Services
+gem 'twitter'
+
+# Jobs
+gem 'sidekiq'
+gem 'sinatra'
+gem 'slim', '2.0.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
