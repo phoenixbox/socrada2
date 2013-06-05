@@ -4,9 +4,14 @@ class GetProfile
   
   def perform(uid, friend_id)
     user = User.find_by_uid(uid)
-    friend_node = User.find_by_uid(friend_id)
     
-    unless friend_node.screen_name
+    begin
+      friend_node = $neo.get_node_index("users", "uid", friend_id).first
+    rescue
+      friend_node = nil
+    end
+        
+    unless friend_node["data"]["screen_name"]
       begin
         friend = user.client.user(friend_id)
         $neo.set_node_properties(friend_node,
