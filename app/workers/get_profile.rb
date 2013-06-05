@@ -13,7 +13,7 @@ class GetProfile
         
     unless friend_node["data"]["screen_name"]
       begin
-        friend = user.client.user(friend_id)
+        friend = user.client.user(friend_id.to_i)
         $neo.set_node_properties(friend_node,
                            {"name"      => friend.name,
                             "screen_name"  => friend.screen_name,
@@ -24,7 +24,8 @@ class GetProfile
                             "followers_count" => friend.followers_count,
                             "friends_count"   => friend.friends_count
                             })        
-    
+        $neo.add_to_index("users", "screen_name", friend.screen_name, friend_node)                            
+        $neo.add_to_index("users", "name", friend.name, friend_node)                            
       rescue Twitter::Error::TooManyRequests => error
         GetFollowers.perform_in( rand(15..60).minutes, uid, friend_id)
       end  
