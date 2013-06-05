@@ -4,6 +4,12 @@ Socrada2::Application.routes.draw do
 
   mount Sidekiq::Web, at: "/sidekiq"
 
+  root :to => "home#index"
+  resources :users, :only => [:show]
+  match 'auth/failure' => redirect('/')
+  match 'auth/:provider/callback', to: 'sessions#create', as: 'signin'
+  match 'signout', to: "sessions#destroy", as: "signout"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

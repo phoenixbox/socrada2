@@ -12,6 +12,7 @@ gem 'neography'
 
 # External Services
 gem 'twitter'
+gem 'omniauth-twitter'
 
 # Jobs
 gem 'sidekiq'
@@ -21,6 +22,13 @@ gem 'slim', '2.0.0'
 
 # Others
 gem 'foreman'
+gem 'haml'
+
+# Twitter Bootstrap
+#gem "therubyracer"
+#gem "less-rails" 
+gem "twitter-bootstrap-rails"
+
 
 # Gems used only for assets and not required
 # in production environments by default.
