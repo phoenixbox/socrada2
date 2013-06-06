@@ -10,6 +10,9 @@
 # Ignore Neo4j
 neo4j
 
+# Ignore precompiled Assets
+/public/assets
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 

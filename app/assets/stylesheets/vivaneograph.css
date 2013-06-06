@@ -1,0 +1,23 @@
+/*
+-----------------------------------------
+ Graph
+-----------------------------------------
+*/
+
+.node {
+    background-color: #00a2e8;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+}
+.link {
+    background-color: #dddddd;
+    position: absolute;
+}
+
+#graph{
+    position: absolute;
+    width: 70%;
+    height: 100%;
+}
+
