@@ -23,7 +23,7 @@ class GetFollowers
           slice_count += 1
         end
       
-        batch_result = $neo.batch *commands
+        batch_result = $neo.batch_not_streaming *commands
         batch_result.each do |b|  
           friend_nodes << {:uid => b["body"]["data"]["uid"], :node_id => b["body"]["self"].split("/").last}
         end
@@ -42,6 +42,6 @@ class GetFollowers
       commands << [:create_unique_relationship, "follows", "nodes",  "#{b[:uid]}-#{uid}", "follows", b[:node_id], user]
     end
 
-    $neo.batch *commands
+    $neo.batch_not_streaming *commands
   end
 end
