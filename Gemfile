@@ -25,6 +25,7 @@ gem 'slim', '2.0.0'
 gem 'foreman'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'figaro'
 
 # Twitter Bootstrap
 gem "twitter-bootstrap-rails"
