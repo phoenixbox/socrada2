@@ -58,7 +58,7 @@ function onLoad() {
           if (link && link.ui) {
               // link.ui is a special property of each link
               // points to the link presentation object.
-              link.ui.attr('stroke', isOn ? 'red' : 'gray');
+              link.ui.attr('stroke', isOn ? 'blue' : 'gray');
           }
       });
    };

@@ -20,3 +20,7 @@ neo4j
 /log/*.log
 .DS_Store
 /tmp
+dump.rdb
+
+# Ignore application configuration
+/config/application.yml

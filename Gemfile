@@ -20,11 +20,15 @@ gem 'sidekiq-failures'
 gem 'sidekiq-unique-jobs'
 gem 'sinatra', require: false
 gem 'slim', '2.0.0'
+gem 'thin'
 
 # Others
 gem 'foreman'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'figaro'
+gem 'better_errors'
+gem 'binding_of_caller'
 
 # Twitter Bootstrap
 gem "twitter-bootstrap-rails"
