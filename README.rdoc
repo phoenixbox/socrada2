@@ -3,7 +3,7 @@
 Socrada
 
 
-== Getting Started
+== Getting Started Locally
 
 1. At the command prompt:
        rake neo4j:install
@@ -26,6 +26,17 @@ the following resources handy:
 * The Getting Started Guide: http://guides.rubyonrails.org/getting_started.html
 * Ruby on Rails Tutorial Book: http://www.railstutorial.org/
 
+== Getting Started on Heroku
+
+1. At the command prompt:
+       heroku create socrada
+       heroku addons:add neo4j
+       heroku addons:add redistogo
+       heroku config:add CONSUMER_KEY="your twitter consumer key"
+       heroku config:add CONSUMER_SECRET="your twitter consumer secret"
+       git push heroku master
+  	   heroku ps:scale worker=1
+       heroku run rake neo4j:create
 
 == Debugging Rails
 
