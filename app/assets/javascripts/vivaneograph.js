@@ -1,3 +1,5 @@
+var graph = Viva.Graph.graph();	
+
 function addNeo(graph, data) {
 	        alert(JSON.stringify(data))
     function addNode(id, label) {
@@ -36,7 +38,6 @@ function loadData(graph, id) {
     })
 }
 
-var graph = Viva.Graph.graph();	
 
 function onLoad() {
 
@@ -57,7 +58,7 @@ function onLoad() {
           if (link && link.ui) {
               // link.ui is a special property of each link
               // points to the link presentation object.
-              link.ui.attr('stroke', isOn ? 'white' : 'gray');
+              link.ui.attr('stroke', isOn ? 'red' : 'gray');
           }
       });
    };

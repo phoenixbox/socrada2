@@ -3,5 +3,5 @@ jQuery ->
     source: "/search_screen_names"
   onLoad()
   $('form#search').bind('ajax:success', (event, data, status, xhr) ->
-    alert(JSON.stringify(graph)))
-#    addNeo(graph, {edges:data}))
+    addNeo(graph, {edges:data}))
+#    alert(JSON.stringify(graph)))
