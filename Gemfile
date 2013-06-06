@@ -7,6 +7,7 @@ gem 'rails', '3.2.13'
 
 
 # Databases
+gem 'pg'
 gem 'neography'
 
 # External Services
