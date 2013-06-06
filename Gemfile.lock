@@ -97,6 +97,7 @@ GEM
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
     os (0.9.6)
+    pg (0.15.1)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -160,7 +161,6 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.7)
     temple (0.6.5)
     thin (1.5.0)
       daemons (>= 1.0.9)
@@ -199,6 +199,7 @@ DEPENDENCIES
   jquery-ui-rails
   neography
   omniauth-twitter
+  pg
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   sidekiq
@@ -206,7 +207,6 @@ DEPENDENCIES
   sidekiq-unique-jobs
   sinatra
   slim (= 2.0.0)
-  sqlite3
   thin
   twitter
   twitter-bootstrap-rails

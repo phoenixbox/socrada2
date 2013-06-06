@@ -7,7 +7,7 @@ gem 'rails', '3.2.13'
 
 
 # Databases
-gem 'sqlite3'
+gem 'pg'
 gem 'neography'
 
 # External Services
