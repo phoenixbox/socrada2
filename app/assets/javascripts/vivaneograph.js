@@ -1,7 +1,7 @@
 var graph = Viva.Graph.graph();	
 
 function addNeo(graph, data) {
-	        alert(JSON.stringify(data))
+	        //alert(JSON.stringify(data))
     function addNode(id, label) {
         if (!id || typeof id == "undefined") return null;
         var node = graph.getNode(id);

@@ -4,4 +4,3 @@ jQuery ->
   onLoad()
   $('form#search').bind('ajax:success', (event, data, status, xhr) ->
     addNeo(graph, {edges:data}))
-#    alert(JSON.stringify(graph)))
