@@ -3,9 +3,9 @@
 Socrada's aim is to enable a user to visualize their social connections and then strategize their networking based on this information. Challenging aspects overcome in this project included the substitution of a traditional ActiveRecord based relational database to using a node based graph database called Neo4j. As well as this I learned about Cypher the query language for Neo4j, implemented the VivaGraph JS graphing library to visualize the node relationships and constructed trenched background workers that mitigate Twitter rate limiting issues. This project was created as apart of an individual gSchool project. Max DeMarzi the creator of the Neography Ruby gem was nice enough to collaborate with me and teach me a thing or two about Neo4j so many thanks to him.
 
 ###What to look for
-Neo4j implementation
-VivaGraph JS Visualisation
-Tranched Background Workers
+* Neo4j implementation
+* VivaGraph JS Visualisation
+* Tranched Background Workers
 
 ****
 
