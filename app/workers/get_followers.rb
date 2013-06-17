@@ -8,9 +8,7 @@ class GetFollowers
     friend_nodes =[]
     cursor ||= "-1"
     slice_count = 0
-    
-    # Get the twitter users that follow me
-
+  
     while cursor != 0 do
       friends = user.client.follower_ids({:cursor => cursor})
       
@@ -33,9 +31,7 @@ class GetFollowers
         GetFollowers.perform_in(16.minutes, uid, cursor)
       end          
     end
-
     
-    # Add the twitter users I follow as my followers
     commands = [] 
      
     friend_nodes.each do |b|  

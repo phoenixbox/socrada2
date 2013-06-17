@@ -15,7 +15,7 @@ class UsersController < ApplicationController
                                   COALESCE(related.image_url?, '/assets/twitter.png') AS related_image_url                 
               LIMIT 50"
 
-    connections = $neo.execute_query(cypher, {:uid => params[:id].to_i })["data"] 
+    connections = $neo.execute_query(cypher, {:uid => params[:id].to_i })["data"]
     render json: connections.collect{|n| {"source" => n[0], "source_data" => {:screen_name => n[1], 
                                                                               :image_url => n[2]},
                                           "target" => n[3], "target_data" => {:screen_name => n[4], 

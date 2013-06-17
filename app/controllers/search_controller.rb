@@ -1,6 +1,7 @@
 class SearchController < ApplicationController
   respond_to :json
 
+  # Note the action and route create to trigger the acion
   def screen_names    
     cypher = "START me=node:users({query}) 
               RETURN me.uid, me.screen_name
@@ -8,7 +9,6 @@ class SearchController < ApplicationController
               LIMIT 15"
 
    render json: $neo.execute_query(cypher, {:query => "screen_name:*#{params[:term]}* OR name:*#{params[:term]}*" })["data"].map{|x| { label: x[1], value: x[0]}}.to_json   
-
   end
   
   def paths

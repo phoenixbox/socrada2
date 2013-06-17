@@ -6,7 +6,7 @@ class User < Neography::Node
     rescue
       user = nil
     end
-
+    # .first is the same as [0]
     if user && user.first["data"]["token"]
       self.new(user.first)
     else
@@ -22,12 +22,9 @@ class User < Neography::Node
                                 "location"  => auth.info.location,
                                 "image_url" => auth.info.image,
                                 "uid"       => auth.uid,
-#                                "statuses_count"  => auth.info.statuses_count,
-#                                "followers_count" => auth.info.followers_count,
-#                                "friends_count"   => auth.info.friends_count,
                                 "token"     => auth.credentials.token, 
-                                "secret"    => auth.credentials.secret})
-
+                                "secret"    => auth.credentials.secret
+                                })
     $neo.add_to_index("users", "screen_name", auth.info.nickname, node)    
     $neo.add_to_index("users", "name", auth.info.name, node)                                                    
     user = User.load(node)
@@ -35,11 +32,11 @@ class User < Neography::Node
     user
   end
   
-    def client
-      @client ||= Twitter::Client.new(
-        :oauth_token        => self.token,
-        :oauth_token_secret => self.secret
-       )
-    end
+  def client
+    @client ||= Twitter::Client.new(
+      :oauth_token        => self.token,
+      :oauth_token_secret => self.secret
+     )
+  end
       
 end  

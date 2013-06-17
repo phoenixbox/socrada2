@@ -9,6 +9,7 @@ gem 'rails', '3.2.13'
 # Databases
 gem 'pg'
 gem 'neography'
+gem 'sqlite3'
 
 # External Services
 gem 'twitter'
@@ -29,6 +30,7 @@ gem 'jquery-ui-rails'
 gem 'figaro'
 gem 'better_errors'
 gem 'binding_of_caller'
+gem 'pry'
 
 # Twitter Bootstrap
 gem "twitter-bootstrap-rails"
