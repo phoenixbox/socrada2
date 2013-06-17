@@ -23,27 +23,28 @@ Socrada's aim is to enable a user to visualize their social connections and then
 * As is a Twitter developer application, from which you can access your
   * Twitter consumer access key &
   * Twitter consumer secret key
-* These steps will help you get started
-  * Install Neo4j
-    * rake neo4j:install
-  * Start the Neo4j server
-    * rake neo4j:start
-    * visit http://localhost:7474/webadmin/ to see the Neo4j admin interface
-      * There are issues with viewing this interface in Chrome so you may have to use Firefox :)
-  * Create Neo4j database
-    * rake neo4j:create
-  * Install Redis
-    * brew install redis
-  * Start the Redis server
-    * redis-server
-  * Set your Twitter Keys (if you have any problems with this I suggest using Figaro - https://github.com/laserlemon/figaro)
-    * export CONSUMER_KEY="your twitter consumer key"
-    * export CONSUMER_SECRET="your twitter consumer secret"
-  * Bundle the gems
-    * bundle install
-  * Run the server & visit the page
-    * foreman start
-    * http://localhost:5100
+* These steps will help you get started:
+
+* Install Neo4j
+  * rake neo4j:install
+* Start the Neo4j server
+  * rake neo4j:start
+  * visit http://localhost:7474/webadmin/ to see the Neo4j admin interface
+    * There are issues with viewing this interface in Chrome so you may have to use Firefox :)
+* Create Neo4j database
+  * rake neo4j:create
+* Install Redis
+  * brew install redis
+* Start the Redis server
+  * redis-server
+* Set your Twitter Keys (if you have any problems with this I suggest using Figaro - https://github.com/laserlemon/figaro)
+  * export CONSUMER_KEY="your twitter consumer key"
+  * export CONSUMER_SECRET="your twitter consumer secret"
+* Bundle the gems
+  * bundle install
+* Run the server & visit the page
+  * foreman start
+  * http://localhost:5100
 
 ****
 
