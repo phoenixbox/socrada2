@@ -48,6 +48,20 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development, :test do
+  gem 'guard-rspec'
+  gem 'cane'
+  gem 'capybara'
+  gem 'debugger'
+  gem 'factory_girl_rails', "~> 4.0"
+  gem 'launchy'
+  gem 'mock_redis'
+  gem 'rack_session_access'
+  gem 'reek'
+  gem 'rspec-rails'
+  gem 'selenium-webdriver', '2.31.0'
+end
+
 
 
 # To use ActiveModel has_secure_password
