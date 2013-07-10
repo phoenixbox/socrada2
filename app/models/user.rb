@@ -15,11 +15,11 @@ class User < Neography::Node
   end
   
   def self.create_with_omniauth(auth)
+    # binding.pry
     node = $neo.create_unique_node("users", "uid", auth.uid)
     $neo.set_node_properties(node, 
                               {"name"       => auth.info.name,
                                 "screen_name"  => auth.info.nickname,
-                                "location"  => auth.info.location,
                                 "image_url" => auth.info.image,
                                 "uid"       => auth.uid,
                                 "token"     => auth.credentials.token, 

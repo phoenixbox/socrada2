@@ -1,9 +1,19 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#" style="padding-top: 20px">Socrada</a>
+      <div class="pull-right search-bar">
+      	<%= form_tag("/search_paths", :method => "post", :remote => true, :id => "search") do %>
+      	  <%= text_field_tag(:q) %>
+      	  <%= submit_tag("Search") %>
+      	<% end %>
+      </div><!-- end of .pull-right -->
+    </div><!-- end of .container -->
+  </div><!-- end of .navbar-inner -->
+</div><!-- end of .navbar -->
 <div id="graph"></div>
-
-<% content_for :sidepanel do %>
-	<%= form_tag("/search_paths", :method => "post", :remote => true, :id => "search") do %>
-	  <%= label_tag(:q, "Search for:") %>
-	  <%= text_field_tag(:q) %>
-	  <%= submit_tag("Search") %>
-	<% end %>
-<% end %>
